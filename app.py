@@ -161,9 +161,9 @@ with st.form("injury_form"):
         training_hours = st.number_input("Training Hours Per Week", min_value=5.0, max_value=19.0, value=DEFAULTS["Training_Hours_Per_Week"])
 
     with col2:
-        recovery_days = st.number_input("Recovery Days Per Week", min_value=1, max_value=3, value=DEFAULTS["Recovery_Days_Per_Week"])
-        match_count = st.number_input("Match Count Per Week", min_value=1, max_value=4, value=DEFAULTS["Match_Count_Per_Week"])
-        rest_days = st.number_input("Rest Between Events (days)", min_value=1, max_value=3, value=DEFAULTS["Rest_Between_Events_Days"])
+        recovery_days = st.number_input("Recovery Days Per Week", min_value=1.0, max_value=3.0, value=DEFAULTS["Recovery_Days_Per_Week"])
+        match_count = st.number_input("Match Count Per Week", min_value=1.0, max_value=4.0, value=DEFAULTS["Match_Count_Per_Week"])
+        rest_days = st.number_input("Rest Between Events (days)", min_value=1.0, max_value=3.0, value=DEFAULTS["Rest_Between_Events_Days"])
         fatigue = st.slider("Fatigue Score", min_value=1, max_value=9, value=DEFAULTS["Fatigue_Score"])
         performance = st.slider("Performance Score", min_value=50, max_value=99, value=DEFAULTS["Performance_Score"])
         team_contribution = st.slider("Team Contribution Score", min_value=50, max_value=99, value=DEFAULTS["Team_Contribution_Score"])
