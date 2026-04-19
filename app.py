@@ -4,7 +4,7 @@ import streamlit as st
 
 st.set_page_config(page_title="Athlete Injury Predictor", page_icon="🏃", layout="centered")
 
-MODEL_PATH = "injury_model(2).pkl"
+MODEL_PATH = "injury_model.pkl"
 
 @st.cache_resource
 def load_model():
@@ -33,7 +33,7 @@ FEATURE_ORDER = [
 
 st.title("Athlete Injury Predictor")
 st.write(
-    "This app uses a pre-trained machine learning model (`injury_model(2).pkl`) "
+    "This app uses a pre-trained machine learning model (`injury_model.pkl`) "
     "to predict whether an athlete is likely to be injured based on their input data."
 )
 
@@ -116,5 +116,5 @@ if submitted:
 st.markdown("---")
 st.caption(
     "This Streamlit app uses a previously trained `.pkl` model file. "
-    "Make sure `injury_model(2).pkl`, `app.py`, and `requirements.txt` are in the same project folder."
+    "Make sure `injury_model.pkl`, `app.py`, and `requirements.txt` are in the same project folder."
 )
