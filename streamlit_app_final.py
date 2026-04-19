@@ -122,7 +122,7 @@ elif use_identity:
 else:
     st.info("Upload the original training CSV for notebook-consistent predictions, or enable the fallback checkbox in the sidebar.")
 
-tab1, tab2, tab3 = st.tabs(["Single Athlete", "Batch Prediction", "How It Works"])
+tab1, = st.tabs(["Single Athlete",  ])
 
 with tab1:
     st.subheader("Single-athlete prediction")
@@ -183,58 +183,6 @@ with tab1:
             st.dataframe(features, use_container_width=True)
         except Exception as e:
             st.error(f"Prediction failed: {e}")
-
-with tab2:
-    st.subheader("Batch prediction from CSV")
-    st.write("Upload a CSV with the raw notebook columns:")
-    st.code(", ".join(RAW_REQUIRED_COLUMNS), language="text")
-
-    template_df = get_template_df()
-    st.download_button(
-        "Download example CSV template",
-        template_df.to_csv(index=False).encode("utf-8"),
-        file_name="athlete_prediction_template.csv",
-        mime="text/csv"
-    )
-
-    batch_file = st.file_uploader("Batch CSV", type=["csv"], key="batch_csv")
-    if batch_file is not None:
-        try:
-            batch_df = pd.read_csv(batch_file)
-            features = build_feature_frame(batch_df, scaler if scaler_ready else None)
-            probs = model.predict_proba(features)[:, 1]
-            preds = model.predict(features)
-
-            results = batch_df.copy()
-            results["Predicted_Class"] = np.where(preds == 1, "Injured", "Not Injured")
-            results["Injury_Probability"] = probs
-            results["Risk_Band"] = [risk_band(p) for p in probs]
-
-            st.dataframe(results, use_container_width=True)
-
-            st.download_button(
-                "Download predictions CSV",
-                results.to_csv(index=False).encode("utf-8"),
-                file_name="athlete_injury_predictions.csv",
-                mime="text/csv"
-            )
-        except Exception as e:
-            st.error(f"Batch prediction failed: {e}")
-
-with tab3:
-    st.subheader("How this version works")
-    st.markdown(
-        """
-        - This app loads your saved `injury_model.pkl`.
-        - Your notebook trained the logistic regression model on **scaled numeric features** plus dummy-encoded categorical variables.
-        - The `.pkl` you uploaded contains the trained model, but **not** the fitted scaler.
-        - Because of that, the most accurate setup is:
-          1. keep `injury_model.pkl` in the repo  
-          2. upload the original training CSV in the sidebar  
-          3. let the app rebuild the scaler before predicting
-        - If you use the fallback mode without the training CSV, the app can still run, but the numeric features will not match the notebook preprocessing exactly.
-        """
-    )
 
     st.write("Expected model columns:")
     st.json(feature_names)
