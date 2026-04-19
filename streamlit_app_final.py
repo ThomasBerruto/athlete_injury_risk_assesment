@@ -100,8 +100,8 @@ with st.sidebar:
     if not model_cols_ok:
         st.warning("The model's saved feature names differ from the expected notebook schema. Predictions may fail unless the training CSV matches the model.")
     st.divider()
-    st.subheader("Optional: training CSV")
-    st.write("Upload the original training CSV to rebuild the scaler from your notebook workflow. This is the most reliable way to use the `.pkl` correctly.")
+    st.subheader("Training CSV")
+    st.write("Uploading a csv to retrain the model works more effectively than only using the model. You are able to try both to see how it works with and without training.")
     train_file = st.file_uploader("Training CSV", type=["csv"], key="training_csv")
     use_identity = st.checkbox("Allow predictions without training CSV", value=False)
     st.caption("Without the original training CSV, the model can still load, but numeric fields will not be scaled the same way they were during training.")
