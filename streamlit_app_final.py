@@ -101,10 +101,10 @@ with st.sidebar:
         st.warning("The model's saved feature names differ from the expected notebook schema. Predictions may fail unless the training CSV matches the model.")
     st.divider()
     st.subheader("Training CSV")
-    st.write("Uploading a csv to retrain the model works more effectively than only using the model. You are able to try both to see how it works with and without training.")
+    st.write("Uploading a CSV to retrain the model works more effectively than only using the model. You are able to try both to see how it works with and without training. (upload the file from my Github)")
     train_file = st.file_uploader("Training CSV", type=["csv"], key="training_csv")
     use_identity = st.checkbox("Allow predictions without training CSV", value=False)
-    st.caption("Without the original training CSV, the model can still load, but numeric fields will not be scaled the same way they were during training.")
+    st.caption("Without the original training CSV, the model will load, but numeric fields will not be scaled the same way they were during training.")
 
 scaler = None
 scaler_ready = False
