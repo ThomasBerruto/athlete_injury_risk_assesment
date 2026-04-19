@@ -152,13 +152,13 @@ with st.form("injury_form"):
     col1, col2 = st.columns(2)
 
     with col1:
-        age = st.number_input("Age", min_value=18, max_value=24, value=DEFAULTS["Age"])
-        height_cm = st.number_input("Height (cm)", min_value=160.0, max_value=199.0, value=DEFAULTS["Height_cm"])
-        weight_kg = st.number_input("Weight (kg)", min_value=55.0, max_value=99.0, value=DEFAULTS["Weight_kg"])
+        age = st.number_input("Age", min_value=18, max_value=40, value=DEFAULTS["Age"])
+        height_cm = st.number_input("Height (cm)", min_value=150.0, max_value=199.0, value=DEFAULTS["Height_cm"])
+        weight_kg = st.number_input("Weight (kg)", min_value=55.0, max_value=100.0, value=DEFAULTS["Weight_kg"])
         gender = st.selectbox("Gender", ["Female", "Male"], index=0)
         position = st.selectbox("Position", ["Center", "Forward", "Guard"], index=0)
-        training_intensity = st.slider("Training Intensity", min_value=1, max_value=9, value=DEFAULTS["Training_Intensity"])
-        training_hours = st.number_input("Training Hours Per Week", min_value=5.0, max_value=19.0, value=DEFAULTS["Training_Hours_Per_Week"])
+        training_intensity = st.slider("Training Intensity", min_value=0, max_value=10, value=DEFAULTS["Training_Intensity"])
+        training_hours = st.number_input("Training Hours Per Week", min_value=0.0, max_value=40.0, value=DEFAULTS["Training_Hours_Per_Week"])
 
     with col2:
         recovery_days = st.number_input("Recovery Days Per Week", min_value=0.0, max_value=7.0, value=DEFAULTS["Recovery_Days_Per_Week"])
