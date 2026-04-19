@@ -161,14 +161,14 @@ with st.form("injury_form"):
         training_hours = st.number_input("Training Hours Per Week", min_value=5.0, max_value=19.0, value=DEFAULTS["Training_Hours_Per_Week"])
 
     with col2:
-        recovery_days = st.number_input("Recovery Days Per Week", min_value=1.0, max_value=3.0, value=DEFAULTS["Recovery_Days_Per_Week"])
-        match_count = st.number_input("Match Count Per Week", min_value=1.0, max_value=4.0, value=DEFAULTS["Match_Count_Per_Week"])
-        rest_days = st.number_input("Rest Between Events (days)", min_value=1.0, max_value=3.0, value=DEFAULTS["Rest_Between_Events_Days"])
-        fatigue = st.slider("Fatigue Score", min_value=1, max_value=9, value=DEFAULTS["Fatigue_Score"])
-        performance = st.slider("Performance Score", min_value=50, max_value=99, value=DEFAULTS["Performance_Score"])
-        team_contribution = st.slider("Team Contribution Score", min_value=50, max_value=99, value=DEFAULTS["Team_Contribution_Score"])
-        load_balance = st.slider("Load Balance Score", min_value=62, max_value=100, value=DEFAULTS["Load_Balance_Score"])
-        acl_risk = st.slider("ACL Risk Score", min_value=2, max_value=100, value=DEFAULTS["ACL_Risk_Score"])
+        recovery_days = st.number_input("Recovery Days Per Week", min_value=0.0, max_value=7.0, value=DEFAULTS["Recovery_Days_Per_Week"])
+        match_count = st.number_input("Match Count Per Week", min_value=0.0, max_value=7.0, value=DEFAULTS["Match_Count_Per_Week"])
+        rest_days = st.number_input("Rest Between Events (days)", min_value=0.0, max_value=7.0, value=DEFAULTS["Rest_Between_Events_Days"])
+        fatigue = st.slider("Fatigue Score", min_value=0, max_value=10, value=DEFAULTS["Fatigue_Score"])
+        performance = st.slider("Performance Score", min_value=0, max_value=100, value=DEFAULTS["Performance_Score"])
+        team_contribution = st.slider("Team Contribution Score", min_value=0, max_value=100, value=DEFAULTS["Team_Contribution_Score"])
+        load_balance = st.slider("Load Balance Score", min_value=0, max_value=100, value=DEFAULTS["Load_Balance_Score"])
+        acl_risk = st.slider("ACL Risk Score", min_value=0, max_value=100, value=DEFAULTS["ACL_Risk_Score"])
 
     submitted = st.form_submit_button("Predict Injury Risk")
 
