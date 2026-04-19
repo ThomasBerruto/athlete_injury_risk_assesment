@@ -147,8 +147,6 @@ st.caption("This version matches the notebook more closely by using the saved sc
 
 model, scaler, model_columns = load_artifacts()
 
-with st.expander("Expected files", expanded=False):
-    st.code("app.py\ninjury_model.pkl\ninjury_scaler.pkl\nrequirements.txt", language="text")
 
 with st.form("injury_form"):
     col1, col2 = st.columns(2)
