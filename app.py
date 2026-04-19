@@ -4,7 +4,7 @@ import joblib
 import pandas as pd
 import streamlit as st
 
-st.set_page_config(page_title="Athlete Injury Risk Assessment", page_icon="🏃", layout="centered")
+st.set_page_config(page_title="Athlete Injury Risk Assessment", page_icon="🏀", layout="centered")
 
 MODEL_PATH = "injury_model.pkl"
 SCALER_PATH = "injury_scaler.pkl"
@@ -143,7 +143,7 @@ def validate_ranges(raw_inputs: dict):
     return warnings
 
 st.title("Athlete Injury Risk Assessment")
-st.caption("This version matches the notebook more closely by using the saved scaler and the same feature ranges seen in training.")
+st.caption("This version matches uses the trained model saved as 'injury_model.pkl' as well as a scaler model saved as 'injury_scaler.pkl")
 
 model, scaler, model_columns = load_artifacts()
 
@@ -161,9 +161,9 @@ with st.form("injury_form"):
         training_hours = st.number_input("Training Hours Per Week", min_value=5.0, max_value=19.0, value=DEFAULTS["Training_Hours_Per_Week"])
 
     with col2:
-        recovery_days = st.number_input("Recovery Days Per Week", min_value=1.0, max_value=3.0, value=DEFAULTS["Recovery_Days_Per_Week"])
-        match_count = st.number_input("Match Count Per Week", min_value=1.0, max_value=4.0, value=DEFAULTS["Match_Count_Per_Week"])
-        rest_days = st.number_input("Rest Between Events (days)", min_value=1.0, max_value=3.0, value=DEFAULTS["Rest_Between_Events_Days"])
+        recovery_days = st.number_input("Recovery Days Per Week", min_value=1, max_value=3, value=DEFAULTS["Recovery_Days_Per_Week"])
+        match_count = st.number_input("Match Count Per Week", min_value=1, max_value=4, value=DEFAULTS["Match_Count_Per_Week"])
+        rest_days = st.number_input("Rest Between Events (days)", min_value=1, max_value=3, value=DEFAULTS["Rest_Between_Events_Days"])
         fatigue = st.slider("Fatigue Score", min_value=1, max_value=9, value=DEFAULTS["Fatigue_Score"])
         performance = st.slider("Performance Score", min_value=50, max_value=99, value=DEFAULTS["Performance_Score"])
         team_contribution = st.slider("Team Contribution Score", min_value=50, max_value=99, value=DEFAULTS["Team_Contribution_Score"])
@@ -222,9 +222,4 @@ if submitted:
     with st.expander("Encoded + scaled model input"):
         st.dataframe(scaled_df, use_container_width=True)
 
-    with st.expander("Why the earlier app looked wrong"):
-        st.write(
-            "The earlier version used incorrect UI ranges for some features. For example, "
-            "Performance_Score, Team_Contribution_Score, Load_Balance_Score, and ACL_Risk_Score "
-            "were treated like 1-10 style fields, but the notebook trained on much larger ranges."
-        )
+    
