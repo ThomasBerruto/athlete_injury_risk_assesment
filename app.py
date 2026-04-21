@@ -143,8 +143,7 @@ def validate_ranges(raw_inputs: dict):
     return warnings
 
 st.title("Athlete Injury Risk Assessment")
-st.caption("This Injury predictor model is a Logisitical Regression model that is already trained and can provide an accurate predictions of whether or not you will be injured based on the scores you provide for each feature. 
-If you look at my Github, it utilizes the 'injury_model.pkl' and 'scaler.pkl'")
+st.caption("This Injury predictor model is a Logisitical Regression model that is already trained and can provide an accurate predictions of whether or not you will be injured based on the scores you provide for each feature. If you look at my Github, it utilizes the 'injury_model.pkl' and 'scaler.pkl'")
 
 model, scaler, model_columns = load_artifacts()
 
